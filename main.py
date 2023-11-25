@@ -31,8 +31,7 @@ print('Doanh thu: ')
 print((df['So Luong'] * df['Gia']).sum())
 
 #d
-con_lai = df_san_pham['So Luong'] - df_ban_hang['So Luong']
-df_san_pham['So Luong'] = con_lai
+df_san_pham['So Luong'] = df_san_pham['So Luong'] - df_ban_hang['So Luong']
 print('San pham sau khi update so luong: ')
 print(df_san_pham)
 
