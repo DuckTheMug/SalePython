@@ -18,7 +18,7 @@ print('Thong Tin Hoa Don: ')
 print(df_thong_tin)
 
 #b
-df = df_thong_tin.groupby(df_thong_tin['ID San Pham'], as_index=False, dropna=False)[['So Luong']].sum()
+df = df_thong_tin.groupby(by=df_thong_tin['ID San Pham'], as_index=False, dropna=False)[['So Luong']].sum()
 df_ban_hang = pd.merge(left=df_san_pham[['Ten', 'ID San Pham']], right=df, how='left', on='ID San Pham').fillna(0)
 print('Ban Hang: ')
 print(df_ban_hang)
@@ -37,6 +37,7 @@ print(df_san_pham)
 
 #e
 df_thong_tin = df_thong_tin.groupby(by=['ID Hoa Don', 'ID San Pham'], as_index=False).sum()
+print('Thong tin hoa don sau khi update trung lap: ')
 print(df_thong_tin)
 
 #f
