@@ -49,7 +49,6 @@ with pd.ExcelWriter(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'D
     df_ban_hang.to_excel(excel_writer=writer, sheet_name='San Pham Da Ban', index=False)
     
 #f
-
 df_ban_hang[['Ten', 'So Luong']].set_index('Ten').sort_values(by='So Luong', ascending=False).plot(kind='bar', title = 'Bieu do cho san pham da ban', figsize=(20, 15)).set_xlabel('Ten',fontsize = 8)
 plt.savefig('Figure.svg')
 plt.show()
