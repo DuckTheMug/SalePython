@@ -6,6 +6,14 @@ pip install -r requirements.txt
 
 ## Usage
 
-```sh
+##### Setting up random data
+
+```shell
+python setup.py
+```
+
+##### Running
+
+```shell
 python main.py
 ```

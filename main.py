@@ -1,5 +1,6 @@
 import pandas as pd
 import os
+import matplotlib.pyplot as plt
 
 #a
 with pd.ExcelFile(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'DuLieuThucHanh2_V1.xlsx')) as reader:
@@ -27,8 +28,7 @@ print(df_ban_hang[df_ban_hang['So Luong'] == df_ban_hang['So Luong'].max()])
 
 #c
 df = pd.merge(left=df, right=df_san_pham[['ID San Pham', 'Gia']], on='ID San Pham')
-print('Doanh thu: ')
-print((df['So Luong'] * df['Gia']).sum())
+print(f'Doanh thu: {(df['So Luong'] * df['Gia']).sum()}')
 
 #d
 df_san_pham['So Luong'] = df_san_pham['So Luong'] - df_ban_hang['So Luong']
@@ -40,10 +40,6 @@ df_thong_tin = df_thong_tin.groupby(by=['ID Hoa Don', 'ID San Pham'], as_index=F
 print('Thong tin hoa don sau khi update trung lap: ')
 print(df_thong_tin)
 
-#f
-
-### TODO ###
-
 #g
 with pd.ExcelWriter(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'DuLieuThucHanh2_V1_output.xlsx')) as writer:
     df_san_pham.to_excel(excel_writer=writer, sheet_name='San Pham', index=False)
@@ -52,3 +48,8 @@ with pd.ExcelWriter(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'D
     df_thong_tin.to_excel(excel_writer=writer, sheet_name='Thong Tin Hoa Don', index=False)
     df_ban_hang.to_excel(excel_writer=writer, sheet_name='San Pham Da Ban', index=False)
     
+#f
+
+df_ban_hang[['Ten', 'So Luong']].set_index('Ten').sort_values(by='So Luong', ascending=False).plot(kind='bar', title = 'Bieu do cho san pham da ban', figsize=(20, 15)).set_xlabel('Ten',fontsize = 8)
+plt.savefig('Figure.svg')
+plt.show()
