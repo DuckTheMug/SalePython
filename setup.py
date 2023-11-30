@@ -20,20 +20,8 @@ for i in range(50):
     lstReID.append(shortuuid.ShortUUID().random(8))
     lstIDEm.append(shortuuid.ShortUUID().random(8))
     lstIDIt.append(shortuuid.ShortUUID().random(8))
-    while True:
-        n = generator.generate()
-        if n not in lstNEm:
-            lstNEm.append(n)
-            break
-        else:
-            continue
-    while True:
-        pn = 'Sản phẩm {num}'.format(num=str(np.random.randint(500)))
-        if pn not in lstNIt:
-            lstNIt.append(pn)
-            break
-        else:
-            continue
+    lstNEm.append(generator.generate())
+    lstNIt.append('Sản phẩm {num}'.format(num=str(np.random.randint(500))))
     lstIIt.append(np.random.randint(500, 1000))
     lstSIt.append(np.random.randint(10, 50))
     lstP.append(np.random.randint(5, 10) * 10000)
