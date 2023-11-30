@@ -28,7 +28,8 @@ print(df_ban_hang[df_ban_hang['So Luong'] == df_ban_hang['So Luong'].max()])
 
 #c
 df = pd.merge(left=df, right=df_san_pham[['ID San Pham', 'Gia']], on='ID San Pham')
-print(f'Doanh thu: {(df['So Luong'] * df['Gia']).sum()}')
+doanhthu = (df['So Luong'] * df['Gia']).sum()
+print(f'Doanh thu: {doanhthu}')
 
 #d
 df_san_pham['So Luong'] = df_san_pham['So Luong'] - df_ban_hang['So Luong']
